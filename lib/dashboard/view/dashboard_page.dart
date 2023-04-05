@@ -20,25 +20,41 @@ class DashboardView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // final state = context.select((DashboardCubit cubit) => cubit.state);
     final l10n = context.l10n;
-    return Scaffold(
-      appBar: AppBar(title: Text(l10n.counterAppBarTitle)),
-      body: const Center(child: CounterText()),
-      floatingActionButton: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: [
-          FloatingActionButton(
-            onPressed: () => context.read<DashboardCubit>().increment(),
-            child: const Icon(Icons.add),
+    return BlocConsumer<DashboardCubit, DashboardState>(
+      listener: (context, state) {
+        state.maybeWhen(
+          initial: () => ScaffoldMessenger.of(context)
+              .showSnackBar(const SnackBar(content: Text('Initial'))),
+          loading: () {
+            ScaffoldMessenger.of(context)
+                .showSnackBar(const SnackBar(content: Text('Loading')));
+          },
+          orElse: () {},
+        );
+      },
+      builder: (context, state) {
+        return Scaffold(
+          appBar: AppBar(title: Text(l10n.counterAppBarTitle)),
+          body: const Center(child: CounterText()),
+          floatingActionButton: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              FloatingActionButton(
+                onPressed: () => context.read<DashboardCubit>().increment(),
+                child: const Icon(Icons.add),
+              ),
+              const SizedBox(height: 8),
+              FloatingActionButton(
+                onPressed: () => context.read<DashboardCubit>().decrement(),
+                child: const Icon(Icons.remove),
+              ),
+            ],
           ),
-          const SizedBox(height: 8),
-          FloatingActionButton(
-            onPressed: () => context.read<DashboardCubit>().decrement(),
-            child: const Icon(Icons.remove),
-          ),
-        ],
-      ),
+        );
+      },
     );
   }
 }

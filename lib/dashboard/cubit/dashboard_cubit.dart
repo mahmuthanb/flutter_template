@@ -6,6 +6,6 @@ part 'dashboard_cubit.freezed.dart';
 class DashboardCubit extends Cubit<DashboardState> {
   DashboardCubit() : super(const DashboardState.initial());
 
-  void increment() => emit(state);
-  void decrement() => emit(state);
+  void increment() => emit(const DashboardState.loading());
+  void decrement() => emit(const DashboardState.initial());
 }
