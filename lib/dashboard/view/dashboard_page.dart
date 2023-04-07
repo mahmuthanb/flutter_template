@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_template/dashboard/cubit/dashboard_cubit.dart';
 import 'package:flutter_template/l10n/l10n.dart';
+import 'package:flutter_template/shared/widget/loading_widget.dart';
 
 class DashboardPage extends StatelessWidget {
   const DashboardPage({super.key});
@@ -37,21 +38,29 @@ class DashboardView extends StatelessWidget {
       builder: (context, state) {
         return Scaffold(
           appBar: AppBar(title: Text(l10n.counterAppBarTitle)),
-          body: const Center(child: CounterText()),
-          floatingActionButton: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              FloatingActionButton(
-                onPressed: () => context.read<DashboardCubit>().increment(),
-                child: const Icon(Icons.add),
-              ),
-              const SizedBox(height: 8),
-              FloatingActionButton(
-                onPressed: () => context.read<DashboardCubit>().decrement(),
-                child: const Icon(Icons.remove),
-              ),
-            ],
+          body: state.when(
+            initial: () => const Center(child: CounterText()),
+            loading: LoadingPlaceholder.new,
+          ),
+          floatingActionButton: state.maybeWhen(
+            initial: () => Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                FloatingActionButton(
+                  onPressed: () => context.read<DashboardCubit>().increment(),
+                  child: const Icon(Icons.add),
+                ),
+                const SizedBox(height: 8),
+                FloatingActionButton(
+                  onPressed: () => context.read<DashboardCubit>().decrement(),
+                  child: const Icon(Icons.remove),
+                ),
+              ],
+            ),
+            orElse: () {
+              return null;
+            },
           ),
         );
       },
