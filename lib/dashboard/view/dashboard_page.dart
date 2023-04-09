@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_template/core/widget/loading_widget.dart';
 import 'package:flutter_template/dashboard/cubit/dashboard_cubit.dart';
 import 'package:flutter_template/l10n/l10n.dart';
-import 'package:flutter_template/shared/widget/loading_widget.dart';
 
 class DashboardPage extends StatelessWidget {
   const DashboardPage({super.key});
