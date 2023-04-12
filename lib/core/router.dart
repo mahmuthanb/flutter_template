@@ -5,7 +5,7 @@ import 'package:go_router/go_router.dart';
 
 class AppRouter {
   static GoRouter router() => GoRouter(
-        initialLocation: '/WASDA',
+        initialLocation: '/',
         // To see detailed log about router config and errors if having
         debugLogDiagnostics: true,
         errorBuilder: (context, state) => const ErrorScreen(
