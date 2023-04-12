@@ -1,12 +1,16 @@
+import 'package:flutter_template/core/widget/error_widget.dart';
 import 'package:flutter_template/dashboard/dashboard.dart';
 import 'package:flutter_template/users/detail/view/user_detail_page.dart';
 import 'package:go_router/go_router.dart';
 
 class AppRouter {
   static GoRouter router() => GoRouter(
-        initialLocation: '/wasd',
-
-        // errorBuilder: (context, state) => ,
+        initialLocation: '/WASDA',
+        // To see detailed log about router config and errors if having
+        debugLogDiagnostics: true,
+        errorBuilder: (context, state) => const ErrorScreen(
+          message: 'ROUTE NOT FOUND',
+        ),
         routes: [
           GoRoute(
             path: '/',
