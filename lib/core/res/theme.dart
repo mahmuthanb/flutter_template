@@ -1,8 +1,7 @@
+import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_template/core/res/colors.dart';
 
 class AppTheme {
-  static ThemeData theme() => ThemeData(
-        primarySwatch: AppColors.primarySwatch,
-      );
+  static ThemeData light() => FlexThemeData.light(scheme: FlexScheme.mandyRed);
+  static ThemeData dark() => FlexThemeData.dark(scheme: FlexScheme.mandyRed);
 }
