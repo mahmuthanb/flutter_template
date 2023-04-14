@@ -25,19 +25,7 @@ class DashboardView extends StatelessWidget {
   Widget build(BuildContext context) {
     // final state = context.select((DashboardCubit cubit) => cubit.state);
     final l10n = context.l10n;
-    return BlocConsumer<DashboardCubit, DashboardState>(
-      // listener: (context, state) {
-      //   state.maybeWhen(
-      //     initial: () => ScaffoldMessenger.of(context)
-      //         .showSnackBar(const SnackBar(content: Text('Initial'))),
-      //     loading: () {
-      //       ScaffoldMessenger.of(context)
-      //           .showSnackBar(const SnackBar(content: Text('Loading')));
-      //     },
-      //     orElse: () {},
-      //   );
-      // },
-      listener: (context, state) {},
+    return BlocBuilder<DashboardCubit, DashboardState>(
       builder: (context, state) {
         return Scaffold(
           appBar: AppBar(title: Text(l10n.counterAppBarTitle)),
@@ -50,7 +38,6 @@ class DashboardView extends StatelessWidget {
                   child: TextButton(
                     onPressed: () => context.go(
                       '${AppRoutes.userDetailsPage}/2',
-                      // pathParameters: {'userId': '2'},
                     ),
                     child: const Text('go to userdetail/2'),
                   ),
