@@ -3,17 +3,26 @@ import 'package:flutter_template/features/dashboard/view/dashboard_page.dart';
 import 'package:flutter_template/features/users/detail/view/user_detail_page.dart';
 import 'package:go_router/go_router.dart';
 
+abstract class AppRoutes {
+  static const initialPage = '/';
+  static const usersPage = '/users';
+  static const userDetailsPage = '/userDetails';
+  static const welcomePage = '/welcome';
+  static const loginPage = '/login';
+}
+
 class AppRouter {
   static GoRouter router() => GoRouter(
         initialLocation: '/',
         // To see detailed log about router config and errors if having
         debugLogDiagnostics: true,
-        errorBuilder: (context, state) => const ErrorScreen(
-          message: 'ROUTE NOT FOUND',
+        errorBuilder: (context, state) => ErrorScreen(
+          message: state.error!.message,
         ),
         routes: [
           GoRoute(
             path: '/',
+            name: AppRoutes.initialPage,
             builder: (context, state) => const DashboardPage(),
           ),
           /* 
@@ -23,20 +32,10 @@ class AppRouter {
           object provided to the builder callback:
            */
           GoRoute(
-            path: '/users/:userId',
+            path: '${AppRoutes.userDetailsPage}/:userId',
+            // name: AppRoutes.userDetailsPage,
             builder: (context, state) =>
                 UserDetailPage(state.pathParameters['userId']),
-          ),
-          /*
-          Similarly, to access a query string parameter 
-          (the part of URL after the ?), use GoRouterState.
-          For example, a URL path such as /users?userId=admins 
-          can read the filter parameter: 
-          */
-          GoRoute(
-            path: '/users',
-            builder: (context, state) =>
-                UserDetailPage(state.uri.queryParameters['userId']),
           ),
         ],
       );

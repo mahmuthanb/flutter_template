@@ -11,6 +11,13 @@ class UserDetailPage extends StatelessWidget {
     // create: (_) => DashboardCubit(),
     // child: const DashboardView(),
     // );
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('User#$id'),
+      ),
+      body: Center(
+        child: Text(id!),
+      ),
+    );
   }
 }
