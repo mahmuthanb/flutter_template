@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_template/core/widget/error_widget.dart';
 import 'package:flutter_template/features/dashboard/view/dashboard_page.dart';
 import 'package:flutter_template/features/users/detail/view/user_detail_page.dart';
@@ -12,8 +13,10 @@ abstract class AppRoutes {
 }
 
 class AppRouter {
-  static GoRouter router() => GoRouter(
+  GlobalKey<NavigatorState> mainNavigatorKey = GlobalKey<NavigatorState>();
+  GoRouter router() => GoRouter(
         initialLocation: '/',
+        navigatorKey: mainNavigatorKey,
         // To see detailed log about router config and errors if having
         debugLogDiagnostics: true,
         errorBuilder: (context, state) => ErrorScreen(

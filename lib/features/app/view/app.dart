@@ -13,7 +13,7 @@ class App extends StatelessWidget {
       darkTheme: AppTheme.dark(),
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      routerConfig: AppRouter.router(),
+      routerConfig: AppRouter().router(),
     );
   }
 }
