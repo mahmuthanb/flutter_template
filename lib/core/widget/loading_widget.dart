@@ -1,27 +1,47 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_template/core/widget/shimmer_widget.dart';
 
 class LoadingPlaceholder extends StatelessWidget {
   const LoadingPlaceholder({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return const Padding(
+      padding: EdgeInsets.all(8),
       child: Column(
         children: [
-          Container(
-            width: 100,
-            height: 100,
-            margin: const EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              color: Colors.grey,
-              borderRadius: BorderRadius.circular(8),
-            ),
+          Row(
+            children: [
+              ShimmerWidget(
+                type: BoxType.circle,
+              ),
+              ShimmerWidget(),
+              ShimmerWidget(
+                type: BoxType.rectangle,
+              ),
+            ],
           ),
-          Container(
-            width: 100,
-            height: 100,
-            color: Colors.grey,
+          ShimmerWidget.shimmerRow,
+          Row(
+            children: [
+              ShimmerWidget(),
+              ShimmerWidget(
+                type: BoxType.rectangle,
+              ),
+              ShimmerWidget(),
+            ],
           ),
+          ShimmerWidget.shimmerRow21,
+          Row(
+            children: [
+              ShimmerWidget(),
+              ShimmerWidget(),
+              ShimmerWidget(
+                type: BoxType.rectangle,
+              ),
+            ],
+          ),
+          ShimmerWidget.shimmerRow121,
         ],
       ),
     );
