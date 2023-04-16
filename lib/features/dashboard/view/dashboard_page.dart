@@ -28,7 +28,7 @@ class DashboardView extends StatelessWidget {
     return BlocBuilder<DashboardCubit, DashboardState>(
       builder: (context, state) {
         return Scaffold(
-          appBar: AppBar(title: Text(l10n.counterAppBarTitle)),
+          appBar: AppBar(title: Text(l10n.dashboardAppBarTitle)),
           body: state.when(
             initial: () => Column(
               mainAxisAlignment: MainAxisAlignment.center,

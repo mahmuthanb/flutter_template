@@ -1,0 +1,7 @@
+{
+    "@@locale": "tr",
+    "dashboardAppBarTitle": "Flutter Proje Şablonu",
+    "@dashboardAppBarTitle": {
+        "description": "Anasayfa AppBar için yazılan başlık metni"
+    }
+}

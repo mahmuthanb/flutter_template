@@ -1,7 +1,7 @@
 {
     "@@locale": "en",
-    "counterAppBarTitle": "Counter",
-    "@counterAppBarTitle": {
-        "description": "Text shown in the AppBar of the Counter Page"
+    "dashboardAppBarTitle": "Flutter Project Template",
+    "@dashboardAppBarTitle": {
+        "description": "Text shown in the AppBar of the Dashboard Page"
     }
 }
