@@ -47,6 +47,10 @@ class AppColors {
   static const Color google = Color(0xFFdd482f);
   static const Color green2 = Color(0xFF47b6ad);
   static const Color green3 = Color(0xFF4FBA89);
+
+  static const Color shimmerBase = lightGrey;
+  static const Color shimmerHighlighted = grey;
+
   static const LinearGradient gradient = LinearGradient(
     colors: [green, primarySwatch],
   );
