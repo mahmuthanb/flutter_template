@@ -3,5 +3,6 @@
     "dashboardAppBarTitle": "Flutter Project Template",
     "@dashboardAppBarTitle": {
         "description": "Text shown in the AppBar of the Dashboard Page"
-    }
+    },
+    "settingsPageAppBarTitle":"Settings"
 }

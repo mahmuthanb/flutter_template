@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_template/core/widget/error_widget.dart';
 import 'package:flutter_template/features/dashboard/view/dashboard_page.dart';
+import 'package:flutter_template/features/settings/view/settings_page.dart';
 import 'package:flutter_template/features/users/detail/view/user_detail_page.dart';
 import 'package:go_router/go_router.dart';
 
@@ -10,6 +11,7 @@ abstract class AppRoutes {
   static const userDetailsPage = '/userDetails';
   static const welcomePage = '/welcome';
   static const loginPage = '/login';
+  static const settingsPage = '/settings';
 }
 
 class AppRouter {
@@ -40,6 +42,10 @@ class AppRouter {
             builder: (context, state) =>
                 UserDetailPage(state.pathParameters['userId']),
           ),
+          GoRoute(
+            path: AppRoutes.settingsPage,
+            builder: (context, state) => const SettingsPage(),
+          )
         ],
       );
 }
