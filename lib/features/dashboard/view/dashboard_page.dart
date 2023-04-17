@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_template/core/router.dart';
+import 'package:flutter_template/core/widget/custom_button.dart';
 import 'package:flutter_template/core/widget/loading_widget.dart';
 import 'package:flutter_template/features/dashboard/cubit/dashboard_cubit.dart';
 import 'package:flutter_template/l10n/l10n.dart';
@@ -32,14 +33,17 @@ class DashboardView extends StatelessWidget {
           body: state.when(
             initial: () => Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Center(
-                  child: TextButton(
-                    onPressed: () => context.go(
-                      '${AppRoutes.userDetailsPage}/2',
-                    ),
-                    child: const Text('go to userdetail/2'),
+                CustomButton(
+                  text: 'go to detail page',
+                  onPressed: () => context.push(
+                    '${AppRoutes.userDetailsPage}/2',
+                  ),
+                ),
+                CustomButton(
+                  text: 'settings',
+                  onPressed: () => context.push(
+                    AppRoutes.settingsPage,
                   ),
                 ),
               ],
